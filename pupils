@@ -1,0 +1,21 @@
+#напиши здесь свою программу
+with open ("quotes.txt", "a",encoding="utf-8") as file:
+    file.write("\n" + "М.Ю Лермонтов")
+
+with open ("quotes.txt", "r",encoding="utf-8") as file:
+    data = file.read()
+print(data)
+
+otvet = input("Хотите добавить еще добавить еще одну цитату(да/нет)")
+while otvet != "нет":
+    citata = input("Введите цитату:")
+    with open ("quotes.txt", "a",encoding="utf-8") as file:
+        file.write("\n" + citata)
+    autor = input("Введите автора")
+    with open ("quotes.txt", "a",encoding="utf-8") as file:
+        file.write("\n" + autor)
+    otvet = input("Хотите добавить еще добавить еще одну цитату(да/нет)")
+
+with open ("quotes.txt", "r",encoding="utf-8") as file:
+    data = file.read()
+print(data)
