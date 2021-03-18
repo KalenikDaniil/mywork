@@ -1,0 +1,71 @@
+#начни тут создавать приложение с умными заметками
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+import json
+app = QApplication([])
+main_win = QWidget()
+main_win.setWindowTitle('Умные заметки')
+notes = {
+    "О планетах" :
+        {
+            "текст" : "Что если вода на Марсе это признак жизни?",
+            "теги" :["Марс","гипотезы"]
+    }
+}
+with open("notes_data.json", "w") as file:
+        json.dump(notes, file)
+
+line_H1 = QHBoxLayout()
+line_H2 = QHBoxLayout()
+line_H3 = QHBoxLayout()
+
+line_V1 = QVBoxLayout()
+line_V2 = QVBoxLayout()
+general = QHBoxLayout()
+
+text = QLabel("Список заметок")
+btn1 = QPushButton("Создать заметку")
+btn2 = QPushButton("Удалить заметку")
+btn3 = QPushButton("Сохранить заметку")
+btn4 = QPushButton("Открепить от заметки")
+btn6 = QPushButton("Добавить к заметке")
+btn7 = QPushButton("Открепить от заметки")
+btn5 = QPushButton("Искать заметки по тегу")
+text2 = QLabel("Список тегов")
+ftext = QTextEdit()
+ftext2 = QLineEdit()
+line_V1.addWidget(ftext)
+
+list_notes = QListWidget()
+list_tags = QListWidget()
+
+
+line_H1.addLayout(line_V2)
+
+
+
+#line_V2.addWidget(ftext)
+line_V2.addWidget(text)
+
+
+line_V2.addWidget(list_notes)
+line_H2.addWidget(btn1)
+line_H2.addWidget(btn2)
+line_V2.addLayout(line_H2)
+line_V2.addWidget(btn3)
+line_V2.addWidget(text2)
+line_V2.addWidget(list_tags)
+line_V2.addWidget(ftext2)
+
+line_H3.addWidget(btn6)
+line_H3.addWidget(btn7)
+line_V2.addLayout(line_H3)
+line_V2.addWidget(btn5)
+
+general.addLayout(line_V1)
+general.addLayout(line_V2)
+
+
+main_win.setLayout(general)
+main_win.show()
+app.exec_()
